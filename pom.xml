@@ -24,6 +24,13 @@
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
         </dependency>
+        <!--JDK11에서 JAXB라이브러리를 내장하고 있지 않아 추가 의존성 추가해야함-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
