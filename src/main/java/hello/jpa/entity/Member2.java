@@ -6,8 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Member {
-    @Id
+public class Member2 {
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
 

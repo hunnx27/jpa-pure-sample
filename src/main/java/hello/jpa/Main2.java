@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class Main {
+public class Main2 {
 
     public static void main(String args[]){
         // 1. classpath:META-INF/persistence.xml 에서 hello 얼라이어스의 설정정보 가져오기
@@ -24,10 +24,13 @@ public class Main {
             member.setId(100l);
             member.setName("홍길동");
 
-            em.persist(member); // 영구 저장하다.(영속성 Context에 넣음)
+            em.persist(member); // 영구 저장하다.(어플리케이션 -> 영속성Context)
+            em.flush();//(어플리케이션 -> 영속성Context -> SQL)
 
-            tx.commit(); //트랜잭션 저장후 종료
-            // 커밋시 insert쿼리 실행됨
+            member.setName("헬로~!");
+            em.clear();//(영속성Context의 캐시 삭제: 캐시가 삭제되면 SQL은 실행되지않음)
+
+            tx.commit(); //트랜잭션 저장후 종료(flush하고 Commit함)
         }catch(Exception e){
             e.printStackTrace();
             tx.rollback(); //트랜잭션 원복후 종료
